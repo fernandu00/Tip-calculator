@@ -24,7 +24,12 @@ check.addEventListener('input', (e) => {
 
 // custom Tip event listener
 customTip.addEventListener('input', (e) =>{
-    buttonValue = parseFloat(e.target.value)
+    let number = parseFloat(e.target.value)
+    if(number > 1){
+        buttonValue =  (number / 100)
+    } else
+        {buttonValue = parseFloat(e.target.value)}
+
     calculateTip()
 })
     
@@ -41,13 +46,6 @@ buttons.forEach((button) => {
 
 
 
-
-
-// function getTip(){
-//     let buttonValue = parseFloat(buttons.value)
-//     console.log(buttonValue)
-// }
-
 // listens to number of people
 people.addEventListener('input', (e) => {
     numberPeople = parseFloat(e.target.value)
@@ -60,7 +58,7 @@ people.addEventListener('input', (e) => {
 function calculateTip(){
     // console.log(`checkValue ${checkValue},buttonValue ${buttonValue},numberPeople ${numberPeople}`)
     tipPerClient = (checkValue * buttonValue) / numberPeople
-    totalWithTipsPerPerson = (checkValue + (checkValue * buttonValue)) /numberPeople
+    totalWithTipsPerPerson = (checkValue + (checkValue * buttonValue)) / numberPeople
     if(Number.isNaN(tipPerClient) || Number.isNaN(totalWithTipsPerPerson)){
         tipPerClient = 0.0
         totalWithTipsPerPerson = 0.0
